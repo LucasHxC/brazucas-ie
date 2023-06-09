@@ -1,0 +1,8 @@
+{
+  "name": "BrazucasIE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d3cd973d"
+}
