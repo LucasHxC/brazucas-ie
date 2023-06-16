@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Events
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let event of events" button (click)="openEventDetails(event.id)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="event.imageUrl"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.date | date: 'MMM d, y' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

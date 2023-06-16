@@ -1,0 +1,35 @@
+ion-slides {
+    height: 100%;
+  }
+  
+  ion-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+  }
+  
+  ion-slide h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  ion-slide p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  ion-slide ion-img {
+    max-width: 100%;
+    max-height: 300px;
+    margin: 20px 0;
+  }
+  
+  ion-button {
+    margin: 20px;
+  }
+  

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/events"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Event Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="event.imageUrl"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{ event.date | date: 'MMM d, y' }}</ion-card-subtitle>
+      <ion-card-title>{{ event.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ event.description }}</p>
+      <ion-button expand="full" fill="solid" (click)="purchaseTicket()">Buy Tickets</ion-button>
+      <ion-button expand="full" fill="outline" (click)="saveEvent()">Save Event</ion-button>
+      <ion-button expand="full" fill="outline" (click)="shareEvent()">Share Event</ion-button>
+      <ion-button expand="full" fill="outline" (click)="registerAttendance()">Register Attendance</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Event Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Date:</strong> {{ event.date | date: 'MMM d, y' }}</p>
+      <p><strong>Time:</strong> {{ event.time }}</p>
+      <p><strong>Venue:</strong> <a href="{{ event.mapLink }}" target="_blank">{{ event.venue }}</a></p>
+      <p><strong>Address:</strong> {{ event.address }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,14 @@
+<ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ monthlyMeeting.topic }}</ion-card-title>
+      <ion-card-subtitle>{{ monthlyMeeting.date | date: 'MMM d, y' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ monthlyMeeting.venue }}</p>
+      <p>{{ monthlyMeeting.address }}</p>
+    </ion-card-content>
+    <ion-buttons>
+      <ion-button (click)="rsvp()">RSVP</ion-button>
+    </ion-buttons>
+  </ion-card>
+  

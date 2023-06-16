@@ -1,0 +1,24 @@
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+  
+    &.info {
+      background-color: #2196f3;
+    }
+  
+    &.success {
+      background-color: #4caf50;
+    }
+  
+    &.error {
+      background-color: #f44336;
+    }
+  
+    .icon {
+      margin-right: 10px;
+    }
+  }
+  

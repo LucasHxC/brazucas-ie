@@ -1,0 +1,16 @@
+ion-card {
+    margin-bottom: 16px;
+  }
+  
+  ion-card-header {
+    ion-card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    ion-card-subtitle {
+      font-size: 14px;
+      color: var(--ion-color-medium);
+    }
+  }
+  

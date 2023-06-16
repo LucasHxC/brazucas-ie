@@ -1,0 +1,10 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</ion-button>
+    </ion-buttons>
+    <div class="page-info">Page {{ currentPage }} of {{ totalPages }}</div>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  

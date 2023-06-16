@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input [(ngModel)]="userProfile.email" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Full Name</ion-label>
+      <ion-input [(ngModel)]="userProfile.fullName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Interests</ion-label>
+      <ion-input [(ngModel)]="userProfile.interests"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Social Media Links</ion-label>
+      <ion-textarea [(ngModel)]="userProfile.socialMediaLinks"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="saveProfile()">Save</ion-button>
+</ion-content>

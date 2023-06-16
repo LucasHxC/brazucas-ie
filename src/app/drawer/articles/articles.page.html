@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Articles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let article of articles" lines="none" (click)="viewArticleDetails(article.id)">
+      <ion-thumbnail slot="start">
+        <img [src]="article.imageUrl" alt="Article Image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.date | date: 'MMM d, y' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content>
+  <ion-list>
+    <app-article-item *ngFor="let article of articles" [article]="article"></app-article-item>
+  </ion-list>
+</ion-content>

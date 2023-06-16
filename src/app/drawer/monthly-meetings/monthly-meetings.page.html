@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Monthly Meetings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-monthly-meeting-item
+      *ngFor="let meeting of monthlyMeetings"
+      [monthlyMeeting]="meeting"
+    ></app-monthly-meeting-item>
+  </ion-list>
+</ion-content>

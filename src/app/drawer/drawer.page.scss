@@ -1,0 +1,17 @@
+ion-list {
+    margin-top: 20px;
+  }
+  
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+  
+  ion-item {
+    --ion-text-color: var(--ion-color-primary);
+  }
+  
+  ion-item[detail='false'] {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
