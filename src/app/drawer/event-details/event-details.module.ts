@@ -7,7 +7,7 @@ import { EventDetailsPage } from './event-details.page';
 @NgModule({
   imports: [
     CommonModule,
-    IonicModule,
+    IonicModule, // Import the IonicModule
     EventDetailsPageRoutingModule
   ],
   declarations: [EventDetailsPage]
