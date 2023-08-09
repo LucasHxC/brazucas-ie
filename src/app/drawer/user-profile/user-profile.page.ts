@@ -1,9 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: 'user-profile.page.html',
 })
+
+@NgModule({
+  imports: [
+    IonicModule,
+    FormsModule
+  ],
+  // ...
+})
+
 export class UserProfilePage {
   userProfile: any = {
     email: '',

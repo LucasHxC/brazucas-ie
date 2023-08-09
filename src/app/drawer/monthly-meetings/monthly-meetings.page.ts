@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-monthly-meetings',
   templateUrl: 'monthly-meetings.page.html',
   styleUrls: ['monthly-meetings.page.scss'],
 })
+
+@NgModule({
+  imports: [
+    // ... other imports ...
+    IonicModule,
+  ],
+  // ...
+})
+
 export class MonthlyMeetingsPage {
   meetings: any[] = [];
 
