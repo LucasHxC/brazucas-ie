@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/brazucasApp', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://lucashxc:m%2BaP8T%266Z%2BAfSEV@cluster0.izukkb5.mongodb.net/?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // Define User schema
 const userSchema = new mongoose.Schema({
