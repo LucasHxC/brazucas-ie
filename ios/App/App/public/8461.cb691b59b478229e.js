@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkapp=self.webpackChunkapp||[]).push([[8461],{8461:(_,t,e)=>{e.r(t),e.d(t,{SafeAreaWeb:()=>n});var a=e(5861),s=e(7423);class n extends s.Uw{getStatusBarHeight(){return(0,a.Z)(function*(){return{height:0}})()}getSafeAreaInsets(){return(0,a.Z)(function*(){return{top:0,bottom:0,left:0,right:0}})()}}}}]);

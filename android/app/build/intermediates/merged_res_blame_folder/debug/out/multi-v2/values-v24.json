@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "brazucas.ie.app-mergeDebugResources-24:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\lucas\\.gradle\\caches\\transforms-3\\1e2523ab15a8878f14744fe6d1b314f4\\transformed\\appcompat-1.6.1\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}
