@@ -5,49 +5,49 @@ const cors = require('cors');
 const contentful = require('contentful');
 
 const app = express();
-
+const mongoDbUri = process.env.MONGODB_URI;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 // MongoDB connection
-mongoose.connect(process.env.mongodb+srv://lucashxc:m%2BaP8T%266Z%2BAfSEV@cluster0.izukkb5.mongodb.net/, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect(mongoDbUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 // Contentful Client
 const contentfulClient = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+  space: process.env.qides0gx8slq,
+  accessToken: process.env.s4Cn7AlE7K_24YmQcf_iBFeCKy8PfVL2seH-ZymFA-I
 });
 
 // Routes from Contentful
 app.get('/api/contentful/articles', async (req, res) => {
-    try {
-        const response = await contentfulClient.getEntries({ content_type: 'article' });
-        res.json(response.items);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch articles' });
-    }
+  try {
+    const response = await contentfulClient.getEntries({ content_type: 'article' });
+    res.json(response.items);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch articles' });
+  }
 });
 
 app.get('/api/contentful/meetings', async (req, res) => {
-    try {
-        const response = await contentfulClient.getEntries({ content_type: 'meeting' });
-        res.json(response.items);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch meetings' });
-    }
+  try {
+    const response = await contentfulClient.getEntries({ content_type: 'meeting' });
+    res.json(response.items);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch meetings' });
+  }
 });
 
 app.get('/api/contentful/events', async (req, res) => {
-    try {
-        const response = await contentfulClient.getEntries({ content_type: 'event' });
-        res.json(response.items);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch events' });
-    }
+  try {
+    const response = await contentfulClient.getEntries({ content_type: 'event' });
+    res.json(response.items);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch events' });
+  }
 });
 
 // Other routes
@@ -61,53 +61,81 @@ app.use('/api/profile', profileRoutes);
 
 // Mock RSVP system
 const meetingRSVPs = {
-    totalAttendees: 0
+  totalAttendees: 0
 };
 
 app.post('/rsvp', (req, res) => {
-    if (meetingRSVPs.totalAttendees >= 200) {
-        return res.status(400).json({ message: 'Limit of 200 attendees reached' });
-    }
+  if (meetingRSVPs.totalAttendees >= 200) {
+    return res.status(400).json({ message: 'Limit of 200 attendees reached' });
+  }
 
-    meetingRSVPs.totalAttendees += 1;
-    res.json({ totalAttendees: meetingRSVPs.totalAttendees });
+  meetingRSVPs.totalAttendees += 1;
+  res.json({ totalAttendees: meetingRSVPs.totalAttendees });
 });
 
 app.get('/attendeesCount', (req, res) => {
-    res.json({ totalAttendees: meetingRSVPs.totalAttendees });
+  res.json({ totalAttendees: meetingRSVPs.totalAttendees });
 });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
 
 // User schema and model
 const userSchema = new mongoose.Schema({
-    email: String,
-    password: String, // Make sure to hash this before storing
-    name: String,
-    profilePicture: String,
-    interests: [String],
-    socialMediaLinks: Map,
-    preferences: Map,
-    // ... other fields
+  email: String,
+  password: String, // Make sure to hash this before storing
+  name: String,
+  profilePicture: String,
+  interests: [String],
+  socialMediaLinks: Map,
+  preferences: Map,
+  // ... other fields
 });
-
+// eslint-disable-next-line no-unused-vars
 const User = mongoose.model('User', userSchema);
 
 // Event schema and model
 const eventSchema = new mongoose.Schema({
-    eventName: String,
-    description: String,
-    date: Date,
-    time: String,
-    venue: String,
-    address: String,
-    imageBanner: String,
-    ticketPrice: Number,
-    ticketLink: String,
-    // ... other fields
+  eventName: String,
+  description: String,
+  date: Date,
+  time: String,
+  venue: String,
+  address: String,
+  imageBanner: String,
+  ticketPrice: Number,
+  ticketLink: String,
+  // ... other fields
+});
+// eslint-disable-next-line no-unused-vars
+const Event = mongoose.model('Event', eventSchema);
+
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+
+const strategy = new Auth0Strategy(
+  {
+    domain: process.env.dev-1jj7x7qid7hwvzc2.us.auth0.com,
+    clientID: process.env.mQiCzDYpVn7VGND2C8PyQAqevxEPwwdW,
+    clientSecret: process.env.OVMWfsLmSi2UvseBEJVhEYsmDOcNEFDzmbg_YaERR-Qj7Q69gU9PUmHORGXIryAD,
+    callbackURL: process.env.io.ionic.starter://dev-1jj7x7qid7hwvzc2.us.auth0.com/capacitor/io.ionic.starter/callback
+  },
+  (accessToken, refreshToken, extraParams, profile, done) => {
+    return done(null, profile);
+  }
+);
+
+passport.use(strategy);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  done(null, user);
 });
 
-const Event = mongoose.model('Event', eventSchema);
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
