@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ import { Component } from '@angular/core';
     </ion-app>
   `,
 })
-export class AppComponent {
+export class AppComponent1 {
   public pages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Events', url: '/events', icon: 'calendar' },
@@ -36,3 +37,18 @@ export class AppComponent {
     { title: 'User Profile', url: '/user-profile', icon: 'person' },
   ];
 }
+
+export class AppComponent {
+  isAuthenticated$ = this.auth.isAuthenticated$;
+
+  constructor(public auth: AuthService) {}
+
+  login() {
+    this.auth.loginWithRedirect();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
+}
+

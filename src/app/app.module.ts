@@ -11,7 +11,7 @@ import { ArticleDetailsPage } from './drawer/article-details/article-details.pag
 import { MonthlyMeetingsPage } from './drawer/monthly-meetings/monthly-meetings.page';
 import { UserProfilePage } from './drawer/user-profile/user-profile.page';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { AuthModule } from '@auth0/auth0-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,10 @@ import { RouteReuseStrategy } from '@angular/router';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    AuthModule.forRoot({
+      domain: 'process.env.dev-1jj7x7qid7hwvzc2.us.auth0.com',
+      clientId: 'process.env.mQiCzDYpVn7VGND2C8PyQAqevxEPwwdW'
+    }),
     AppRoutingModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

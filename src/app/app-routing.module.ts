@@ -7,6 +7,7 @@ import { ArticlesPage } from './drawer/articles/articles.page';
 import { ArticleDetailsPage } from './drawer/article-details/article-details.page';
 import { MonthlyMeetingsPage } from './drawer/monthly-meetings/monthly-meetings.page';
 import { UserProfilePage } from './drawer/user-profile/user-profile.page';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,11 @@ export const routes: Routes = [
     path: 'user-profile',
     component: UserProfilePage,
   },
+    {
+      path: 'user-profile',
+      canActivate: [AuthGuard],
+      loadChildren: () => import('./drawer/user-profile/user-profile.module').then(m => m.UserProfilePageModule)
+    },
 ];
 
 @NgModule({

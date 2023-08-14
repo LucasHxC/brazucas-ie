@@ -1,21 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/articles"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Article Details</ion-title>
+    <ion-title>{{ article.fields.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img [src]="article.imageUrl" alt="Article Image">
-    <ion-card-header>
-      <ion-card-title>{{ article.title }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ article.date | date: 'MMM d, y' }}</p>
-      <div [innerHTML]="article.content"></div>
-    </ion-card-content>
-  </ion-card>
+  <div class="content">
+    {{ article.fields.content }}
+  </div>
 </ion-content>

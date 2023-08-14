@@ -11,6 +11,8 @@
           <ion-item [routerLink]="[page.url]" routerDirection="root">
             <ion-icon slot="start" [name]="page.icon"></ion-icon>
             <ion-label>{{ page.title }}</ion-label>
+            <ion-button *ngIf="!(isAuthenticated$ | async)" (click)="login()">Log in</ion-button>
+            <ion-button *ngIf="(isAuthenticated$ | async)" (click)="logout()">Log out</ion-button>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

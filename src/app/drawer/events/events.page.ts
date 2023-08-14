@@ -1,31 +1,32 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ContentfulService } from '../../core/services/contentful.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-events',
-  templateUrl: 'events.page.html',
-  styleUrls: ['events.page.scss'],
+  templateUrl: './events.page.html',
+  styleUrls: ['./events.page.scss'],
 })
-export class EventsPage {
-  events: any[] = [
-    {
-      id: 1,
-      title: 'Music Festival',
-      date: new Date('2023-06-20'),
-      imageUrl: 'assets/img/music-festival.jpg',
-    },
-    {
-      id: 2,
-      title: 'Art Exhibition',
-      date: new Date('2023-07-05'),
-      imageUrl: 'assets/img/art-exhibition.jpg',
-    },
-    // Add more event objects as needed
-  ];
+export class EventsPage implements OnInit {
 
-  constructor(private router: Router) {}
+  events: any[] = [];
 
-  openEventDetails(eventId: number) {
-    this.router.navigate(['/event-details', eventId]);
+  constructor(private contentfulService: ContentfulService, private navCtrl: NavController) { }
+
+  ngOnInit() {
+    this.loadEvents();
   }
+
+  private async loadEvents() {
+    const eventsCollection = await this.contentfulService.getEvents();
+    this.events = eventsCollection.items;
+  }
+
+  openEvent(event: any) {
+    this.navCtrl.navigateForward('/event-details', {
+      queryParams: { event: JSON.stringify(event) }
+    });
+  }
+  
+
 }

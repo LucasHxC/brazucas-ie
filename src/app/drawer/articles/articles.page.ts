@@ -1,38 +1,31 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ContentfulService } from '../../core/services/contentful.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-articles',
-  templateUrl: 'articles.page.html',
-  styleUrls: ['articles.page.scss'],
+  templateUrl: './articles.page.html',
+  styleUrls: ['./articles.page.scss'],
 })
-export class ArticlesPage {
+export class ArticlesPage implements OnInit {
+
   articles: any[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private contentfulService: ContentfulService, private navCtrl: NavController) { }
 
-  ionViewWillEnter() {
-    // Fetch articles from your data source
-    this.articles = [
-      {
-        id: 1,
-        title: 'Travel Tips for Ireland',
-        date: new Date('2023-06-01'),
-        imageUrl: 'assets/img/travel-tips.jpg',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet erat eu lectus fermentum dignissim. Nullam auctor mi et accumsan feugiat...',
-      },
-      {
-        id: 2,
-        title: 'Irish Cuisine: A Taste of Ireland',
-        date: new Date('2023-05-15'),
-        imageUrl: 'assets/img/irish-cuisine.jpg',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet erat eu lectus fermentum dignissim. Nullam auctor mi et accumsan feugiat...',
-      },
-      // Add more articles here...
-    ];
+  ngOnInit() {
+    this.loadArticles();
   }
 
-  viewArticleDetails(articleId: number) {
-    this.router.navigate(['/article-details', articleId]);
+  private async loadArticles() {
+    const articlesCollection = await this.contentfulService.getArticles();
+    this.articles = articlesCollection.items;
   }
+
+  openArticle(article: any) {
+    this.navCtrl.navigateForward('/article-details', {
+      queryParams: { article: JSON.stringify(article) }
+    });
+  }
+
 }

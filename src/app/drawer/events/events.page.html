@@ -1,20 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Events
-    </ion-title>
+    <ion-title>Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let event of events" button (click)="openEventDetails(event.id)">
-      <ion-thumbnail slot="start">
-        <ion-img [src]="event.imageUrl"></ion-img>
-      </ion-thumbnail>
+    <ion-item *ngFor="let event of events" (click)="openEvent(event)">
       <ion-label>
-        <h2>{{ event.title }}</h2>
-        <p>{{ event.date | date: 'MMM d, y' }}</p>
+        <h2>{{ event.fields.title }}</h2>
+        <p>{{ event.fields.summary }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
