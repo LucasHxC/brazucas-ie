@@ -117,10 +117,10 @@ const Auth0Strategy = require('passport-auth0');
 
 const strategy = new Auth0Strategy(
   {
-    domain: process.env.dev-1jj7x7qid7hwvzc2.us.auth0.com,
-    clientID: process.env.mQiCzDYpVn7VGND2C8PyQAqevxEPwwdW,
-    clientSecret: process.env.OVMWfsLmSi2UvseBEJVhEYsmDOcNEFDzmbg_YaERR-Qj7Q69gU9PUmHORGXIryAD,
-    callbackURL: process.env.io.ionic.starter://dev-1jj7x7qid7hwvzc2.us.auth0.com/capacitor/io.ionic.starter/callback
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL: process.env.AUTH0_CALLBACK_URL
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
     return done(null, profile);
